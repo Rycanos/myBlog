@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
+#include <fstream>
 
 namespace
 {
@@ -99,6 +100,8 @@ namespace	http
 	ss << "-------- Received Request from client --------\n\n";
 	logMsg(ss.str());
 
+	// TODO: parse client request -> send appropriate response
+	
 	sendResponse();
 	close(m_new_socket);
       }
@@ -118,12 +121,31 @@ namespace	http
       }
   }
 
-  std::string	TcpServer::buildResponse()
+  std::string		TcpServer::buildResponse()
   {
-    std::string	htmlFile = "<!DOCTYPE html><html lang=\"en\"><body><h1> HOME </h1><p> Hello Selene! </p></body></html>";
-    std::ostringstream ss;
-    ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
+    std::ostringstream	ss;
+    std::ifstream	inFile;
+    std::string		contents;
+    std::string		ret;
 
+    // Opening the html file, defined in http_tcpServer_linux.cpp
+    inFile.open(BLOG_HOME_PAGE);
+
+    if (!inFile)
+      {
+	std::string_view errMsg = "<!DOCTYPE html><html lang=\"en\"><body><h1> ERROR </h1><p> Could not open file </p></body></html>";
+	std::cerr << "Unable to open file: \"" << BLOG_HOME_PAGE << "\"\n";
+	ss << "HTTP/1.1 500 ERROR\nContent-Type: text/html\nContent-Length: " << errMsg.size() << "\n\n" << errMsg;
+	return ss.str();
+      }
+    while (getline(inFile, contents))
+      {
+	ret.append(contents);
+      }
+
+    // Closing the html file
+    inFile.close();
+    ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << ret.size() << "\n\n" << ret;
     return ss.str();
   }
 

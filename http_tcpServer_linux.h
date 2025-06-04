@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string>
 
+#define BLOG_HOME_PAGE "./html/sample_landing_page.html"
+
 namespace		http
 {
   class			TcpServer
