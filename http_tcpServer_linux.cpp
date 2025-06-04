@@ -1,9 +1,9 @@
-#include <http_tcpServer_linux.h>
-
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
 #include <fstream>
+
+#include "http_tcpServer_linux.h"
 
 namespace
 {
@@ -153,15 +153,21 @@ namespace	http
   {
     long	bytesSent;
 
+    // Sends response to the client
     bytesSent = write(m_new_socket, m_serverMessage.c_str(), m_serverMessage.size());
 
-    if (bytesSent == m_serverMessage.size())
+    // This avoids comparing an unsigned and a signed long int
+    if (bytesSent < 0)
+      {
+	logMsg("Error sending response to client\n");
+      }
+    else if ((unsigned)bytesSent == m_serverMessage.size())
       {
 	logMsg("------ Server Response sent to client ------\n\n");
       }
     else
       {
-	logMsg("Error sending response to client\n");
+	logMsg("Write to client returned 0\n");
       }
   }
 } // namespace http
