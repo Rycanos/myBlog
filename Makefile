@@ -1,11 +1,14 @@
 # Compiler
-CXX =		gcc
+CXX =		g++
 
 # Flags
-CFLAGS =	-lstdc++ -Wall -g
+CFLAGS =	-lstdc++ -Wall -Werror -g
 
 # Source files
-SRC =		server_linux.cpp http_tcpServer_linux.cpp
+SRC =		src/server_linux.cpp src/http_tcpServer_linux.cpp
+
+# Include folder
+INCLUDES =	-I./include/
 
 # Name of output
 NAME =		HttpLinux
@@ -18,7 +21,7 @@ all:		$(NAME)
 
 # Compile
 $(NAME):	$(OBJS)
-		$(CXX) -I. -o $(NAME) $(OBJS) $(CFLAGS)
+		$(CXX) $(INCLUDES) -o $(NAME) $(OBJS) $(CFLAGS)
 
 # Deletes object (.o) files
 clean:
@@ -30,3 +33,5 @@ fclean:		clean
 
 # Deletes all and recompiles
 re:		fclean all
+
+.PHONY:		all clean fclean re
