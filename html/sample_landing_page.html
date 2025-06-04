@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my Blog</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #ffffff;
+    }
+
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+
+    .main-content {
+      flex: 3;
+      margin-right: 20px;
+    }
+
+    .sidebar {
+      flex: 1;
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    article {
+      background-color: #1a1a1a;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    article h2 {
+      color: #ffffff;
+    }
+
+    a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid #333;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>myBlog</h1>
+  </header>
+
+  <div class="container">
+    <div class="main-content">
+      <article>
+        <h2>Welcome to My Blog</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+      </article>
+
+      <article>
+        <h2>Another Post</h2>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure</p>
+        <p><a href="#">Read more...</a></p>
+      </article>
+    </div>
+
+    <aside class="sidebar">
+      <h3>About Me</h3>
+      <p>This section is about me</p>
+      <h3>Links</h3>
+      <ul>
+        <li><a href="#">A link to somwhere else</a></li>
+        <li><a href="#">Another</a></li>
+        <li><a href="#">And another one</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MyBlog. All rights reserved.</p>
+  </footer>
+</body>
+</html>
